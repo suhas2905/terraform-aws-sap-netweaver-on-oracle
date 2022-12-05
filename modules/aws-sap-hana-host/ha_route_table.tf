@@ -17,8 +17,8 @@
  */
 
 data "aws_route_table" "ha_route_table" {
-  #vpc_id = data.aws_vpc.vpc.id
-  subnet_id = element(var.subnet_ids, 0)
+  vpc_id = data.aws_vpc.vpc.id
+  #subnet_id = element(var.subnet_ids, 0)
 }
 
 resource "aws_route" "ha_route" {
