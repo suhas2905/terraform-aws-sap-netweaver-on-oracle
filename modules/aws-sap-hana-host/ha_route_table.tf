@@ -16,9 +16,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-data "aws_route_table" "ha_route_table" {
-  vpc_id = data.aws_vpc.vpc.id
-}
+#data "aws_route_table" "ha_route_table" {
+#  vpc_id = data.aws_vpc.vpc.id
+#}
 
 resource "aws_route" "ha_route" {
   count = var.enable_ha ? 1 : 0
