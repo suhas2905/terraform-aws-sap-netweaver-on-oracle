@@ -20,9 +20,9 @@ output "server_private_ip" {
   value = module.instance.private_ip
 }
 
-output "server_private_ips" {
-  value = module.instance.private_ips
-}
+#output "server_private_ips" {
+#  value = module.instance.private_ips
+#}
 
 output "instance_name" {
   value = module.instance.instance_name
