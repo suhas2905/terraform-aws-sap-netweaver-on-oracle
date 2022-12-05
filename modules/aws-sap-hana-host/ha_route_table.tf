@@ -16,14 +16,15 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#data "aws_route_table" "ha_route_table" {
-#  vpc_id = data.aws_vpc.vpc.id
-#}
+data "aws_route_table" "ha_route_table" {
+  #vpc_id = data.aws_vpc.vpc.id
+  subnet_id = element(var.subnet_ids, 0)
+}
 
 resource "aws_route" "ha_route" {
   count = var.enable_ha ? 1 : 0
 
-  route_table_id         = "rtb-0d42acad88eed4fa8"
+  route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip
   network_interface_id   = module.instance.network_interface_id[0]
 }
