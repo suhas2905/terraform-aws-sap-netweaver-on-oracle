@@ -37,7 +37,7 @@ variable "ssh_key" {
 variable "ebs_optimized" {}
 
 variable "volume_type" {
-  default = "gp2"
+  default = "gp3"
 }
 
 variable "iam_role" {

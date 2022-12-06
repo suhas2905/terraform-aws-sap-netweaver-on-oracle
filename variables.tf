@@ -145,12 +145,12 @@ variable "root_volume_size" {
   type        = number
 }
 variable "hana_disks_data_storage_type" {
-  default     = "gp2"
+  default     = "gp3"
   description = "(Optional) EBS Volume type for hana data volumes. Can be gp2 or io1"
   type        = string
 }
 variable "hana_disks_logs_storage_type" {
-  default     = "gp2"
+  default     = "gp3"
   description = "(Optional) EBS Volume type for hana log volumes. Can be gp2 or io1"
   type        = string
 }
@@ -160,7 +160,7 @@ variable "hana_disks_backup_storage_type" {
   type        = string
 }
 variable "hana_disks_shared_storage_type" {
-  default     = "gp2"
+  default     = "gp3"
   description = "(Optional) EBS Volume type for hana shared volumes."
   type        = string
 }
@@ -170,7 +170,7 @@ variable "hana_disks_shared_size" {
   type        = string
 }
 variable "hana_disks_usr_sap_storage_type" {
-  default     = "gp2"
+  default     = "gp3"
   description = "(Optional) EBS Volume type for hana /usr/sap volumes. "
   type        = string
 }

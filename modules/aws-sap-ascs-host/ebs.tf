@@ -19,7 +19,7 @@
 resource "aws_ebs_volume" "xvdg_volume" {
   availability_zone = module.instance.availability_zone[count.index]
   size              = 50
-  type              = "gp2"
+  type              = "gp3"
   kms_key_id        = var.kms_key_arn
   encrypted         = true
   lifecycle {
@@ -40,7 +40,7 @@ resource "aws_volume_attachment" "ebs_attach_xvdg" {
 resource "aws_ebs_volume" "xvdf_volume" {
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = 50
-  type              = "gp2"
+  type              = "gp3"
   kms_key_id        = var.kms_key_arn
   encrypted         = true
   lifecycle {
@@ -64,7 +64,7 @@ resource "aws_ebs_volume" "xvdh_volume" {
 
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = var.sapmnt_volume_size
-  type              = "gp2"
+  type              = "gp3"
   kms_key_id        = var.kms_key_arn
   encrypted         = var.kms_key_arn != "" ? true : false
   lifecycle {

@@ -163,7 +163,7 @@ resource "aws_volume_attachment" "ebs_attach_xvdq" {
 resource "aws_ebs_volume" "xvdr_volume" {
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = 50
-  type              = "gp2"
+  type              = "gp3"
   kms_key_id        = var.kms_key_arn
   encrypted         = var.kms_key_arn != "" ? true : false
   lifecycle {
