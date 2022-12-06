@@ -158,6 +158,146 @@ variable "hana_disks_logs_gp2" {
   }
 }
 
+variable "hana_disks_data_gp3" {
+  type = map(object({ disk_nb = number, disk_size = number }))
+  default = {
+    "r4.2xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "x1e.xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "r5.4xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "r5.8xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "x1e.2xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "r5.12xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "x1e.4xlarge" = {
+      disk_nb   = 3,
+      disk_size = 225
+    },
+    "r5.24xlarge" = {
+      disk_nb   = 3,
+      disk_size = 400
+    },
+    "x1.16xlarge" = {
+      disk_nb   = 3,
+      disk_size = 400
+    },
+    "x1.32xlarge" = {
+      disk_nb   = 3,
+      disk_size = 800
+    },
+    "x1e.32xlarge" = {
+      disk_nb   = 3,
+      disk_size = 1600
+    },
+    "u-6tb1.metal" = {
+      disk_nb   = 3,
+      disk_size = 2400
+    },
+    "u-9tb1.metal" = {
+      disk_nb   = 3,
+      disk_size = 3600
+    },
+    "u-12tb1.metal" = {
+      disk_nb   = 3,
+      disk_size = 4800
+    },
+    "u-18tb1.metal" = {
+      disk_nb   = 6,
+      disk_size = 3600
+    },
+    "u-24tb1.metal" = {
+      disk_nb   = 6,
+      disk_size = 4800
+    }
+  }
+}
+
+variable "hana_disks_logs_gp3" {
+  type = map(object({ disk_nb = number, disk_size = number }))
+  default = {
+    "r4.2xlarge" = {
+      disk_nb   = 2,
+      disk_size = 175
+    },
+    "x1e.xlarge" = {
+      disk_nb   = 2,
+      disk_size = 175
+    },
+    "r5.4xlarge" = {
+      disk_nb   = 2,
+      disk_size = 175
+    },
+    "r5.8xlarge" = {
+      disk_nb   = 2,
+      disk_size = 175
+    },
+    "x1e.2xlarge" = {
+      disk_nb   = 2,
+      disk_size = 175
+    },
+    "r5.12xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "x1e.4xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "r5.24xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "x1.16xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "x1.32xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "x1e.32xlarge" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "u-6tb1.metal" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "u-9tb1.metal" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "u-12tb1.metal" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "u-18tb1.metal" = {
+      disk_nb   = 2,
+      disk_size = 300
+    },
+    "u-24tb1.metal" = {
+      disk_nb   = 2,
+      disk_size = 300
+    }
+  }
+}
+
 variable "hana_disks_data_io1" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
