@@ -21,7 +21,7 @@ data "aws_route_table" "ha_route_table" {
   subnet_id = element(var.subnet_ids, 0)
 }
 data "aws_instance" "instance_tags" {
-  instance_id = data.aws_instance.instance_tags.tags
+  instance_id = data.aws_instance.instance_tags.tags.value
 }
 
 resource "aws_route" "ha_route" {
