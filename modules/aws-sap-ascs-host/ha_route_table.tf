@@ -34,17 +34,17 @@ data "aws_instance" "instance_tags_1" {
 }
    
 resource "aws_route" "ha_route" {
-  count = instance_id == ascs ? 1 : 0
+  #count = instance_id == ascs ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ASCS
-  network_interface_id   = module.instance.network_interface_id[0]
+  instance_id  = data.aws_instance.instance_tags.id
 }
 resource "aws_route" "ha_route_1" {
-  count = instance_id == ers ? 1 : 0
+  #count = instance_id == ers ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ERS 
-  network_interface_id   = module.instance.network_interface_id[0]
+  instance_id   = data.aws_instance.instance_tags_1.id
               
 }
