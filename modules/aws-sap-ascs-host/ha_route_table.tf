@@ -21,9 +21,18 @@ data "aws_route_table" "ha_route_table" {
   subnet_id = element(var.subnet_ids, 0)
 }
 data "aws_instance" "instance_tags" {
-  instance_id = data.aws_instance.instance_tags.tags.value
+  filter {
+    name = "tag:environment"
+    values = ["ascs"]
+  }
 }
-
+data "aws_instance" "instance_tags_1" {
+  filter {
+    name = "tag:environment"
+    values = ["ers"]
+  }
+}
+   
 resource "aws_route" "ha_route" {
   count = instance_id == ascs ? 1 : 0
 
