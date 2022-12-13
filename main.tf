@@ -124,7 +124,7 @@ module "sap_ascs_host" {
 }
 
 module "sap_ers_host" {
-  source  = "./modules/aws-sap-ascs-host"
+  source  = "./modules/aws-sap-ers-host"
   enabled = var.enabled && var.enable_ha ? true : false
 
   # Instance Count depending on the environment
