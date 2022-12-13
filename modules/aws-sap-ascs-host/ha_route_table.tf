@@ -20,20 +20,33 @@ data "aws_route_table" "ha_route_table" {
   #vpc_id = data.aws_vpc.vpc.id
   subnet_id = element(var.subnet_ids, 0)
 }
-#data "aws_instance" "instance_tags" {
-#  instance_id = data.aws_instance.instance_tags.key.ApplicationComponent
-#}
+
+data "aws_network_interface" "ha_ascs"{
+  filter {
+    name = "security_groups"
+    value = "%ascs%"
+  }
+}
+
+data "aws_network_interface" "ha_ers"{
+  filter {
+    name = "security_groups"
+    value = "%ers%"
+  }
+}
+
 resource "aws_route" "ha_route" {
-  #count = instance_id == ascs ? 1 : 0
+  #count = var.enable_ha ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ASCS
-  network_interface_id   = module.instance.network_interface_id[0]
+  network_interface_id   = data.aws_network_interface.ha_ascs.id
 }
+
 resource "aws_route" "ha_route1" {
-  #count = instance_id == ers ? 1 : 0
+  #count = var.enable_ha ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ERS 
-  network_interface_id   = module.instance.network_interface_id[0]
+  network_interface_id   = data.aws_network_interface.ha_ers.id
 }
