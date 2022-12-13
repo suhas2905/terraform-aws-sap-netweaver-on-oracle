@@ -21,7 +21,7 @@ data "aws_route_table" "ha_route_table" {
   subnet_id = element(var.subnet_ids, 0)
 }
    
-resource "aws_route" "ha_route" {
+resource "aws_route" "ha_route_1" {
   #count = module.instance.tags == ascs ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
