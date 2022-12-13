@@ -24,14 +24,14 @@ data "aws_route_table" "ha_route_table" {
 data "aws_network_interface" "ha_ascs"{
   filter {
     name = "security_groups"
-    value = "%ascs%"
+    values = "%ascs%"
   }
 }
 
 data "aws_network_interface" "ha_ers"{
   filter {
     name = "security_groups"
-    value = "%ers%"
+    values = "%ers%"
   }
 }
 
