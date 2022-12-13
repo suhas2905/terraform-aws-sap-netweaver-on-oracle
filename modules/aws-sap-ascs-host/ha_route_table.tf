@@ -36,6 +36,6 @@ resource "aws_route" "ha_route" {
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ERS 
-  network_interface_id   = module.instance.network_interface_id[1]
+  network_interface_id   = module.instance.network_interface_id[0]
               
 }
