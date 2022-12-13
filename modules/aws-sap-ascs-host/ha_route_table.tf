@@ -21,17 +21,20 @@ data "aws_route_table" "ha_route_table" {
   subnet_id = element(var.subnet_ids, 0)
 }
 
+data "aws_network_interface" "ha_all"{
+ }
+
 data "aws_network_interface" "ha_ascs"{
   filter {
     name = "security_groups"
-    values = "%ascs%"
+    values = [(data.aws_network_interface.ha_all) %ascs]
   }
 }
 
 data "aws_network_interface" "ha_ers"{
   filter {
     name = "security_groups"
-    values = "%ers%"
+    values = [(data.aws_network_interface.ha_all) %ers]
   }
 }
 
