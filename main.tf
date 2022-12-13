@@ -106,7 +106,7 @@ module "sap_ascs_host" {
   # The default security group to be added
   efs_security_group_id = module.sap_efs.security_group_id
   # CIDR block for the overlay IP for Hana installation when HA is enabled
-  destination_cidr_block_for_overlay_ip = var.destination_cidr_block_for_overlay_ip_ASCS
+  destination_cidr_block_for_overlay_ip_ASCS = var.destination_cidr_block_for_overlay_ip_ASCS
   
 
   # Instance Role
@@ -146,7 +146,7 @@ module "sap_ers_host" {
   # The default security group to be added
   efs_security_group_id = module.sap_efs.security_group_id
   # CIDR block for the overlay IP for Hana installation when HA is enabled
-  destination_cidr_block_for_overlay_ip = var.destination_cidr_block_for_overlay_ip_ERS
+  destination_cidr_block_for_overlay_ip_ERS = var.destination_cidr_block_for_overlay_ip_ERS
 
   # ASCS Security group to allow communication for HA
   enable_ha_communication = var.enable_ha ? true : false
