@@ -20,16 +20,18 @@ data "aws_route_table" "ha_route_table" {
   #vpc_id = data.aws_vpc.vpc.id
   subnet_id = element(var.subnet_ids, 0)
 }
-
+data "aws_instance" "instance_tags" {
+  instance_id = data.aws_instance.instance_tags.key.ApplicationComponent
+}
 resource "aws_route" "ha_route" {
-  #count = var.enable_ha ? 1 : 0
+  count = instance_id == ascs ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ASCS
   network_interface_id   = module.instance.network_interface_id[0]
 }
 resource "aws_route" "ha_route1" {
-  #count = var.enable_ha ? 1 : 0
+  count = instance_id == ers ? 1 : 0
 
   route_table_id         = data.aws_route_table.ha_route_table.id
   destination_cidr_block = var.destination_cidr_block_for_overlay_ip_ERS 
