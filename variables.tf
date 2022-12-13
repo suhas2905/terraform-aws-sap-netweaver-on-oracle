@@ -74,6 +74,14 @@ variable "destination_cidr_block_for_overlay_ip" {
   default     = "192.168.10.10/32"
   description = "(Optional when HA. Not used for single installation) The IP to add as an overlay IP on Route tables. Example: 192.168.10.10/32"
 }
+variable "destination_cidr_block_for_overlay_ip_ASCS" {
+  default     = "192.168.10.11/32"
+  description = "(Optional when HA. Not used for single installation) The IP to add as an overlay IP on Route tables. Example: 192.168.10.10/32"
+}
+variable "destination_cidr_block_for_overlay_ip_ERS" {
+  default     = "192.168.10.12/32"
+  description = "(Optional when HA. Not used for single installation) The IP to add as an overlay IP on Route tables. Example: 192.168.10.10/32"
+}
 
 # Operation System
 variable "ami_id" {
