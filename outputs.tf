@@ -24,6 +24,14 @@ output "hana_instance_private_ip" {
   value = module.hana_host.server_private_ip
 }
 
+output "ascs_overlay_ip_route_table_id" {
+  value = module.sap_ascs_host.overlay_route_table_id
+}
+
+output "ers_overlay_ip_route_table_id" {
+  value = module.sap_ers_host.overlay_route_table_id
+}
+
 #output "hana_instance_private_ips" {
 #  value = module.hana_host.server_private_ips
 #}
