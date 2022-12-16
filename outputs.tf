@@ -39,6 +39,15 @@ output "ers_overlay_ip_route_table_id" {
 output "hana_instance_overlay_ip" {
   value = module.hana_host.overlay_ip
 }
+
+output "ascs_instance_overlay_ip" {
+  value = module.sap_ascs_host.overlay_ip_ASCS
+}
+
+output "ers_instance_overlay_ip" {
+  value = module.sap_ers_host.overlay_ip_ERS
+}
+
 output "hana_overlay_ip_route_table_id" {
   value = module.hana_host.overlay_route_table_id
 }
