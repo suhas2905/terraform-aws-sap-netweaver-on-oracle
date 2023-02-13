@@ -17,8 +17,8 @@
  */
 
 locals {
-  instance_policy_name = "${lower(var.application_code)}-${lower(var.application_name)}-sap_hana_instance_default_policy-${lower(var.environment)}"
-  instance_role_name   = "${lower(var.application_code)}-${lower(var.application_name)}-sap_hana_instance_default_role-${lower(var.environment)}"
+  instance_policy_name = "${lower(var.application_code)}-${lower(var.application_name)}-sap_oracle_instance_default_policy-${lower(var.environment)}"
+  instance_role_name   = "${lower(var.application_code)}-${lower(var.application_name)}-sap_oracle_instance_default_role-${lower(var.environment)}"
 }
 
 data "aws_iam_policy_document" "instance_trust" {
