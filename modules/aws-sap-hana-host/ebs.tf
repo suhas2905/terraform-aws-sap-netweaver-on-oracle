@@ -17,10 +17,10 @@
  */
 
 locals {
-  hana_data_size         = var.hana_disks_data_storage_type == "gp2" ? var.hana_disks_data_gp2[var.instance_type].disk_size : var.hana_disks_data_storage_type == "io1" ? var.hana_disks_data_io1[var.instance_type].disk_size : (var.hana_disks_data_storage_type == "gp3" ? var.hana_disks_data_gp3[var.instance_type].disk_size : 0)
-  hana_data_disks_number = var.hana_disks_data_storage_type == "gp2" ? var.hana_disks_data_gp2[var.instance_type].disk_nb : var.hana_disks_data_storage_type == "io1" ? var.hana_disks_data_io1[var.instance_type].disk_nb : (var.hana_disks_data_storage_type == "gp3" ? var.hana_disks_data_gp3[var.instance_type].disk_nb : 0)
-  hana_log_size          = var.hana_disks_logs_storage_type == "gp2" ? var.hana_disks_logs_gp2[var.instance_type].disk_size : var.hana_disks_logs_storage_type == "io1" ? var.hana_disks_logs_io1[var.instance_type].disk_size : (var.hana_disks_logs_storage_type == "gp3" ? var.hana_disks_logs_gp3[var.instance_type].disk_size : 0)
-  hana_log_disks_number  = var.hana_disks_logs_storage_type == "gp2" ? var.hana_disks_logs_gp2[var.instance_type].disk_nb : var.hana_disks_logs_storage_type == "io1" ? var.hana_disks_logs_io1[var.instance_type].disk_nb : (var.hana_disks_logs_storage_type == "gp3" ? var.hana_disks_logs_gp3[var.instance_type].disk_nb : 0)
+  oracle_data_size         = var.oracle_disks_data_storage_type == "gp2" ? var.oracle_disks_data_gp2[var.instance_type].disk_size : var.oracle_disks_data_storage_type == "io1" ? var.oracle_disks_data_io1[var.instance_type].disk_size : (var.oracle_disks_data_storage_type == "gp3" ? var.oracle_disks_data_gp3[var.instance_type].disk_size : 0)
+  oracle_data_disks_number = var.oracle_disks_data_storage_type == "gp2" ? var.oracle_disks_data_gp2[var.instance_type].disk_nb : var.oracle_disks_data_storage_type == "io1" ? var.oracle_disks_data_io1[var.instance_type].disk_nb : (var.oracle_disks_data_storage_type == "gp3" ? var.oracle_disks_data_gp3[var.instance_type].disk_nb : 0)
+  oracle_log_size          = var.oracle_disks_logs_storage_type == "gp2" ? var.oracle_disks_logs_gp2[var.instance_type].disk_size : var.oracle_disks_logs_storage_type == "io1" ? var.oracle_disks_logs_io1[var.instance_type].disk_size : (var.oracle_disks_logs_storage_type == "gp3" ? var.oracle_disks_logs_gp3[var.instance_type].disk_size : 0)
+  oracle_log_disks_number  = var.oracle_disks_logs_storage_type == "gp2" ? var.oracle_disks_logs_gp2[var.instance_type].disk_nb : var.oracle_disks_logs_storage_type == "io1" ? var.oracle_disks_logs_io1[var.instance_type].disk_nb : (var.oracle_disks_logs_storage_type == "gp3" ? var.oracle_disks_logs_gp3[var.instance_type].disk_nb : 0)
   data_volume_names      = formatlist("%s", null_resource.data_volume_names_list.*.triggers.data_volume_name)
   log_volume_names       = formatlist("%s", null_resource.log_volume_names_list.*.triggers.log_volume_name)
 }
