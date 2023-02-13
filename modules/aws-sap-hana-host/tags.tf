@@ -22,5 +22,5 @@ module "tags" {
   application_code      = var.application_code
   application_name      = var.application_name
   sid                   = var.sid
-  application_component = "hana-db"
+  application_component = "oracle-db"
 }
