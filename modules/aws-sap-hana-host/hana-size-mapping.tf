@@ -18,7 +18,7 @@
 
 # This is a calculations based on SAP on AWS best practices
 # https://docs.aws.amazon.com/quickstart/latest/sap-hana/storage.html
-variable "hana_disks_data_gp2" {
+variable "oracle_disks_data_gp2" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
@@ -88,7 +88,7 @@ variable "hana_disks_data_gp2" {
   }
 }
 
-variable "hana_disks_logs_gp2" {
+variable "oracle_disks_logs_gp2" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
@@ -158,7 +158,7 @@ variable "hana_disks_logs_gp2" {
   }
 }
 
-variable "hana_disks_data_gp3" {
+variable "oracle_disks_data_gp3" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
@@ -228,7 +228,7 @@ variable "hana_disks_data_gp3" {
   }
 }
 
-variable "hana_disks_logs_gp3" {
+variable "oracle_disks_logs_gp3" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
@@ -298,7 +298,7 @@ variable "hana_disks_logs_gp3" {
   }
 }
 
-variable "hana_disks_data_io1" {
+variable "oracle_disks_data_io1" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
@@ -368,7 +368,7 @@ variable "hana_disks_data_io1" {
   }
 }
 
-variable "hana_disks_logs_io1" {
+variable "oracle_disks_logs_io1" {
   type = map(object({ disk_nb = number, disk_size = number }))
   default = {
     "r4.2xlarge" = {
