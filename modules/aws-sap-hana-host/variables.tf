@@ -109,31 +109,31 @@ variable "root_volume_size" {
   default     = 50
   description = "(Optional) Size in GBs for the root volumes of the instances"
 }
-variable "hana_disks_data_storage_type" {
+variable "oracle_disks_data_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana data volumes. Can be gp2 or io1"
 }
-variable "hana_disks_logs_storage_type" {
+variable "oracle_disks_logs_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana log volumes. Can be gp2 or io1"
 }
-variable "hana_disks_backup_storage_type" {
+variable "oracle_disks_backup_storage_type" {
   default     = "st1"
   description = "(Optional) EBS Volume type for hana backup volumes."
 }
-variable "hana_disks_shared_storage_type" {
+variable "oracle_disks_shared_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana shared volumes."
 }
-variable "hana_disks_shared_size" {
+variable "oracle_disks_shared_size" {
   default     = "512"
   description = "(Optional) Size in GBs for the hana shared volumes of the instances"
 }
-variable "hana_disks_usr_sap_storage_type" {
+variable "oracle_disks_usr_sap_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana /usr/sap volumes. "
 }
-variable "hana_disks_usr_sap_storage_size" {
+variable "oracle_disks_usr_sap_storage_size" {
   default     = "50"
   description = "(Optional) Size in GBs for the /usr/sap volumes of the instances"
 }
