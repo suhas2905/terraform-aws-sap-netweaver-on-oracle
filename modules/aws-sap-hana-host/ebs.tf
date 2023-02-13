@@ -139,8 +139,8 @@ resource "aws_volume_attachment" "ebs_attach_backup_volumes" {
 # Hana Disk for USR/SAP volume (/dev/xvdq)
 resource "aws_ebs_volume" "usr_sap_volumes" {
   availability_zone = element(module.instance.availability_zone, count.index)
-  size              = var.hana_disks_usr_sap_storage_size
-  type              = var.hana_disks_usr_sap_storage_type
+  size              = var.oracle_disks_usr_sap_storage_size
+  type              = var.oracle_disks_usr_sap_storage_type
   kms_key_id        = var.kms_key_arn
   encrypted         = var.kms_key_arn != "" ? true : false
   lifecycle {
@@ -149,7 +149,7 @@ resource "aws_ebs_volume" "usr_sap_volumes" {
   count = var.enabled ? var.instance_count : 0
   tags = merge(
     module.tags.values,
-  tomap({ "Name" = "${module.tags.values["Name"]}-hana_usr_sap" }))
+  tomap({ "Name" = "${module.tags.values["Name"]}-oracle_usr_sap" }))
 }
 
 resource "aws_volume_attachment" "ebs_attach_xvdq" {
