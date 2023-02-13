@@ -19,7 +19,7 @@
 resource "aws_security_group" "efs" {
   count = var.enabled ? (var.is_scale_out ? 1 : 0) : 0
 
-  name        = "${module.tags.values["Name"]}-hana-efs-sg"
+  name        = "${module.tags.values["Name"]}-oracle-efs-sg"
   description = "Allows NFS traffic from instances within the VPC"
   vpc_id      = var.vpc_id
 
@@ -58,7 +58,7 @@ module "sap_hana_scale_out_efs" {
   aws_region  = data.aws_region.current
   subnet_ids  = var.subnet_ids
   vpc_id      = var.vpc_id
-  name        = "${module.tags.values["Name"]}-hana-efs"
+  name        = "${module.tags.values["Name"]}-oracle-efs"
 
   efs_file_system_id    = ""
   efs_security_group_id = length(aws_security_group.efs) > 0 ? aws_security_group.efs[0].id : ""
