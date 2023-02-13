@@ -88,6 +88,10 @@ variable "ami_id" {
   description = "(Required) The AMI id for the underlying OS"
   type        = string
 }
+variable "ami_id_oracle" {
+  description = "(Required) The AMI id for the underlying OS"
+  type        = string
+}
 variable "ssh_key" {
   description = "(Optional) The key pair name for the instances. If not provided - you can use SSM session manager for console access"
   default     = ""
@@ -133,17 +137,17 @@ variable "enable_ha" {
   description = "(Optional) Defines how many instances should be deployed"
   type        = bool
 }
-variable "hana_is_scale_out" {
+variable "oracle_is_scale_out" {
   default     = false
   description = "(Optional) Defines whether Shared disk should be create as an EFS file system"
   type        = bool
 }
-variable "hana_scale_out_node_count" {
+variable "oracle_scale_out_node_count" {
   description = "(Required, if hana_is_scale_out = false) Defines how many nodes required for scale-out scenario"
   default     = 3
   type        = number
 }
-variable "hana_instance_type" {
+variable "oracle_instance_type" {
   description = "(Required) Identifies the instance types to be used for HANA. Should be from the list of certified instances, since the disk sizing is done based on this"
   type        = string
 }
@@ -152,37 +156,37 @@ variable "root_volume_size" {
   description = "(Optional) Size in GBs for the root volumes of the instances"
   type        = number
 }
-variable "hana_disks_data_storage_type" {
+variable "oracle_disks_data_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana data volumes. Can be gp2 or io1"
   type        = string
 }
-variable "hana_disks_logs_storage_type" {
+variable "oracle_disks_logs_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana log volumes. Can be gp2 or io1"
   type        = string
 }
-variable "hana_disks_backup_storage_type" {
+variable "oracle_disks_backup_storage_type" {
   default     = "st1"
   description = "(Optional) EBS Volume type for hana backup volumes."
   type        = string
 }
-variable "hana_disks_shared_storage_type" {
+variable "oracle_disks_shared_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana shared volumes."
   type        = string
 }
-variable "hana_disks_shared_size" {
+variable "oracle_disks_shared_size" {
   default     = "512"
   description = "(Optional) Size in GBs for the hana shared volumes of the instances"
   type        = string
 }
-variable "hana_disks_usr_sap_storage_type" {
+variable "oracle_disks_usr_sap_storage_type" {
   default     = "gp3"
   description = "(Optional) EBS Volume type for hana /usr/sap volumes. "
   type        = string
 }
-variable "hana_disks_usr_sap_storage_size" {
+variable "oracle_disks_usr_sap_storage_size" {
   default     = 50
   description = "(Optional) Size in GBs for the /usr/sap volumes of the instances"
   type        = number
