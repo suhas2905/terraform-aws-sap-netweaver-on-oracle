@@ -35,18 +35,18 @@ module "sap_efs" {
 }
 
 
-module "hana_host" {
-  source = "./modules/aws-sap-hana-host"
+module "oracle_host" {
+  source = "./modules/aws-sap-oracle-host"
 
   # Instance Count depending on the environment
-  instance_count = var.hana_is_scale_out ? (var.enable_ha ? 2 * var.hana_scale_out_node_count : var.hana_scale_out_node_count) : (var.enable_ha ? 2 : 1)
+  instance_count = var.oracle_is_scale_out ? (var.enable_ha ? 2 * var.oracle_scale_out_node_count : var.oracle_scale_out_node_count) : (var.enable_ha ? 2 : 1)
   enable_ha      = var.enable_ha
-  instance_type  = var.hana_instance_type
+  instance_type  = var.oracle_instance_type
 
-  is_scale_out = var.hana_is_scale_out
+  is_scale_out = var.oracle_is_scale_out
 
   enabled = var.enabled
-  ami_id  = var.ami_id
+  ami_id  = var.ami_id_oracle
 
   # General
 
@@ -176,7 +176,7 @@ module "sap_app_host" {
   instance_count = var.as_instance_count
 
   # General
-  ami_id      = var.ami_id
+  ami_id      = var.ami_id_oracle
   kms_key_arn = var.kms_key_arn
   ssh_key     = var.ssh_key
 
