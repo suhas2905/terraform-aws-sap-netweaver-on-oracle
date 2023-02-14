@@ -16,12 +16,12 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-output "hana_instance_public_ips" {
-  value = module.hana_host.instance_public_ips
+output "oracle_instance_public_ips" {
+  value = module.oracle_host.instance_public_ips
 }
 
-output "hana_instance_private_ip" {
-  value = module.hana_host.server_private_ip
+output "oracle_instance_private_ip" {
+  value = module.oracle_host.server_private_ip
 }
 
 output "ascs_overlay_ip_route_table_id" {
@@ -32,12 +32,12 @@ output "ers_overlay_ip_route_table_id" {
   value = module.sap_ers_host.overlay_route_table_id
 }
 
-#output "hana_instance_private_ips" {
-#  value = module.hana_host.server_private_ips
+#output "oracle_instance_private_ips" {
+#  value = module.oracle_host.server_private_ips
 #}
 
-output "hana_instance_overlay_ip" {
-  value = module.hana_host.overlay_ip
+output "oracle_instance_overlay_ip" {
+  value = module.oracle_host.overlay_ip
 }
 
 output "ascs_instance_overlay_ip" {
@@ -48,8 +48,8 @@ output "ers_instance_overlay_ip" {
   value = module.sap_ers_host.overlay_ip_ERS
 }
 
-output "hana_overlay_ip_route_table_id" {
-  value = module.hana_host.overlay_route_table_id
+output "oracle_overlay_ip_route_table_id" {
+  value = module.oracle_host.overlay_route_table_id
 }
 
 output "app_instance_public_ips" {
