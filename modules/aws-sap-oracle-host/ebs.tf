@@ -37,12 +37,12 @@ resource "null_resource" "log_volume_names_list" {
   count = var.enabled ? local.oracle_log_disks_number : 0
 
   triggers = {
-    log_volume_name = count.index == 0 ? "/dev/xvdm" : count.index == 1 ? "/dev/xvdn" : ""
+    log_volume_name = count.index == 0 ? "/dev/xvdm" : count.index == 1 ? "/dev/xvdn" : count.index == 2 ? "/dev/xvdo_volume" : count.index == 3 ? "/dev/xvdp" : count.index == 4 ? "/dev/xvdq" : ""
   }
 }
 
-# Hana Disks for SHARED volume (/dev/sdl)
-resource "aws_ebs_volume" "xvdo_volume" {
+# Oracle Disks volume (/dev/oracle)
+resource "aws_ebs_volume" "xvdr_volume" {
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = var.oracle_disks_shared_size
   type              = var.oracle_disks_shared_storage_type
@@ -51,20 +51,20 @@ resource "aws_ebs_volume" "xvdo_volume" {
   lifecycle {
     ignore_changes = [kms_key_id, encrypted]
   }
-  count = var.enabled ? (!var.is_scale_out ? var.instance_count : 0) : 0
+  count = var.enabled ? 1 : 0
   tags = merge(
     module.tags.values,
   tomap({ "Name" = "${module.tags.values["Name"]}-oracle_shared" }))
 }
 
-resource "aws_volume_attachment" "ebs_attach_xvdo" {
-  device_name = "/dev/xvdo"
-  count       = var.enabled ? var.instance_count : 0
+resource "aws_volume_attachment" "ebs_attach_xvdr" {
+  device_name = "/dev/xvdr"
+  count       = var.enabled ? 1 : 0
   volume_id   = aws_ebs_volume.xvdo_volume.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
 }
 
-# Hana Disks for DATA volumes
+# oracle Disks for DATA volumes
 resource "aws_ebs_volume" "data_volumes" {
   availability_zone = element(module.instance.availability_zone, floor(count.index / local.oracle_data_disks_number))
   size              = local.oracle_data_size
@@ -88,7 +88,7 @@ resource "aws_volume_attachment" "ebs_attach_data_volumes" {
 }
 
 
-# Hana Disks for LOG volumes
+# oracle Disks for LOG volumes
 resource "aws_ebs_volume" "log_volumes" {
   availability_zone = element(module.instance.availability_zone, floor(count.index / local.oracle_log_disks_number))
   size              = local.oracle_log_size
@@ -112,31 +112,31 @@ resource "aws_volume_attachment" "ebs_attach_log_volumes" {
 
 }
 
-# Hana Disk for BACKUP volume (/dev/xvdp)
+# Hana Disk for BACKUP volume (/dev/xvds)
 resource "aws_ebs_volume" "backup_volumes" {
   availability_zone = element(module.instance.availability_zone, count.index)
   # Assumption that locally we will retain 1 backup on the local EBS Volume
-  size       = local.oracle_data_size * 2 * local.oracle_data_disks_number
+  size       = var.oracle_disks_usr_sap_storage_size
   type       = var.oracle_disks_backup_storage_type
   kms_key_id = var.kms_key_arn
   encrypted  = var.kms_key_arn != "" ? true : false
-  lifecycle {
+ lifecycle {
     ignore_changes = [kms_key_id, encrypted]
   }
-  count = var.enabled ? var.instance_count : 0
+  count = var.enabled ? 1 : 0
   tags = merge(
     module.tags.values,
   tomap({ "Name" = "${module.tags.values["Name"]}-oracle_backup" }))
 }
 
 resource "aws_volume_attachment" "ebs_attach_backup_volumes" {
-  device_name = "/dev/xvdp"
-  count       = var.enabled ? var.instance_count : 0
+  device_name = "/dev/xvds"
+  count       = var.enabled ? 1 : 0
   volume_id   = aws_ebs_volume.backup_volumes.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
 }
 
-# Hana Disk for USR/SAP volume (/dev/xvdq)
+# oracle Disk for USR/SAP volume (/dev/xvdt)
 resource "aws_ebs_volume" "usr_sap_volumes" {
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = var.oracle_disks_usr_sap_storage_size
@@ -152,15 +152,15 @@ resource "aws_ebs_volume" "usr_sap_volumes" {
   tomap({ "Name" = "${module.tags.values["Name"]}-oracle_usr_sap" }))
 }
 
-resource "aws_volume_attachment" "ebs_attach_xvdq" {
-  device_name = "/dev/xvdq"
+resource "aws_volume_attachment" "ebs_attach_xvdt" {
+  device_name = "/dev/xvdt"
   count       = var.enabled ? var.instance_count : 0
   volume_id   = aws_ebs_volume.usr_sap_volumes.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
 }
 
-# Hana Disk for SWAP volume (/dev/xvdr)
-resource "aws_ebs_volume" "xvdr_volume" {
+# oracle Disk for SWAP volume (/dev/xvdu)
+resource "aws_ebs_volume" "xvdu_volume" {
   availability_zone = element(module.instance.availability_zone, count.index)
   size              = 50
   type              = "gp3"
@@ -176,8 +176,8 @@ resource "aws_ebs_volume" "xvdr_volume" {
   tomap({ "Name" = "${module.tags.values["Name"]}-app_swap" }))
 }
 
-resource "aws_volume_attachment" "ebs_attach_xvdr" {
-  device_name = "/dev/xvdr"
+resource "aws_volume_attachment" "ebs_attach_xvdu" {
+  device_name = "/dev/xvdu"
   count       = var.enabled ? var.instance_count : 0
   volume_id   = aws_ebs_volume.xvdr_volume.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
