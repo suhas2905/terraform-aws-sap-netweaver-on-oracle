@@ -60,7 +60,7 @@ resource "aws_ebs_volume" "xvdr_volume" {
 resource "aws_volume_attachment" "ebs_attach_xvdr" {
   device_name = "/dev/xvdr"
   count       = var.enabled ? 1 : 0
-  volume_id   = aws_ebs_volume.xvdo_volume.*.id[count.index]
+  volume_id   = aws_ebs_volume.xvdr_volume.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
 }
 
@@ -179,6 +179,6 @@ resource "aws_ebs_volume" "xvdu_volume" {
 resource "aws_volume_attachment" "ebs_attach_xvdu" {
   device_name = "/dev/xvdu"
   count       = var.enabled ? var.instance_count : 0
-  volume_id   = aws_ebs_volume.xvdr_volume.*.id[count.index]
+  volume_id   = aws_ebs_volume.xvdu_volume.*.id[count.index]
   instance_id = module.instance.instance_id[count.index]
 }
