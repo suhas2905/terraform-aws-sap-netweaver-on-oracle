@@ -126,7 +126,7 @@ variable "oracle_disks_shared_storage_type" {
   description = "(Optional) EBS Volume type for hana shared volumes."
 }
 variable "oracle_disks_shared_size" {
-  default     = "50"
+  default     = "20"
   description = "(Optional) Size in GBs for the hana shared volumes of the instances"
 }
 variable "oracle_disks_usr_sap_storage_type" {
@@ -134,7 +134,7 @@ variable "oracle_disks_usr_sap_storage_type" {
   description = "(Optional) EBS Volume type for hana /usr/sap volumes. "
 }
 variable "oracle_disks_usr_sap_storage_size" {
-  default     = "50"
+  default     = "20"
   description = "(Optional) Size in GBs for the /usr/sap volumes of the instances"
 }
 
