@@ -118,7 +118,7 @@ variable "oracle_disks_logs_storage_type" {
   description = "(Optional) EBS Volume type for hana log volumes. Can be gp2 or io1"
 }
 variable "oracle_disks_backup_storage_type" {
-  default     = "st1"
+  default     = "gp3"
   description = "(Optional) EBS Volume type for hana backup volumes."
 }
 variable "oracle_disks_shared_storage_type" {
@@ -126,7 +126,7 @@ variable "oracle_disks_shared_storage_type" {
   description = "(Optional) EBS Volume type for hana shared volumes."
 }
 variable "oracle_disks_shared_size" {
-  default     = "512"
+  default     = "50"
   description = "(Optional) Size in GBs for the hana shared volumes of the instances"
 }
 variable "oracle_disks_usr_sap_storage_type" {
