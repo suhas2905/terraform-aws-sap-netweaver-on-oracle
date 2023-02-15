@@ -25,6 +25,10 @@ variable "oracle_disks_data_gp2" {
       disk_nb   = 3,
       disk_size = 225
     },
+    "m5.2xlarge" = {
+      disk_nb   = 5,
+      disk_size = 50
+    },
     "x1e.xlarge" = {
       disk_nb   = 3,
       disk_size = 225
@@ -94,6 +98,10 @@ variable "oracle_disks_logs_gp2" {
     "r4.2xlarge" = {
       disk_nb   = 2,
       disk_size = 175
+    },
+    "m5.2xlarge" = {
+      disk_nb   = 4,
+      disk_size = 2
     },
     "x1e.xlarge" = {
       disk_nb   = 2,
@@ -165,6 +173,10 @@ variable "oracle_disks_data_gp3" {
       disk_nb   = 3,
       disk_size = 225
     },
+    "m5.2xlarge" = {
+      disk_nb   = 5,
+      disk_size = 50
+    },
     "x1e.xlarge" = {
       disk_nb   = 3,
       disk_size = 225
@@ -234,6 +246,10 @@ variable "oracle_disks_logs_gp3" {
     "r4.2xlarge" = {
       disk_nb   = 2,
       disk_size = 175
+    },
+    "m5.2xlarge" = {
+      disk_nb   = 4,
+      disk_size = 2
     },
     "x1e.xlarge" = {
       disk_nb   = 2,
@@ -305,6 +321,10 @@ variable "oracle_disks_data_io1" {
       disk_nb   = 1,
       disk_size = 300
     },
+    "m5.2xlarge" = {
+      disk_nb   = 5,
+      disk_size = 50
+    },
     "x1e.xlarge" = {
       disk_nb   = 1,
       disk_size = 300
@@ -374,6 +394,10 @@ variable "oracle_disks_logs_io1" {
     "r4.2xlarge" = {
       disk_nb   = 1,
       disk_size = 260
+    },
+    "m5.2xlarge" = {
+      disk_nb   = 4,
+      disk_size = 2
     },
     "x1e.xlarge" = {
       disk_nb   = 1,
