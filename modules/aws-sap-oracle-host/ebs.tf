@@ -37,7 +37,7 @@ resource "null_resource" "log_volume_names_list" {
   count = var.enabled ? local.oracle_log_disks_number : 0
 
   triggers = {
-    log_volume_name = count.index == 0 ? "/dev/xvdm" : count.index == 1 ? "/dev/xvdn" : count.index == 2 ? "/dev/xvdo_volume" : count.index == 3 ? "/dev/xvdp" : count.index == 4 ? "/dev/xvdq" : ""
+    log_volume_name = count.index == 0 ? "/dev/xvdm" : count.index == 1 ? "/dev/xvdn" : count.index == 2 ? "/dev/xvdo" : count.index == 3 ? "/dev/xvdp" : count.index == 4 ? "/dev/xvdq" : ""
   }
 }
 
