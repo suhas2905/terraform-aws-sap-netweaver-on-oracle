@@ -39,7 +39,7 @@ module "oracle_host" {
   source = "./modules/aws-sap-oracle-host"
 
   # Instance Count depending on the environment
-  instance_count = var.oracle_is_scale_out ? (var.enable_ha ? 2 * var.oracle_scale_out_node_count : var.oracle_scale_out_node_count) : (var.enable_ha ? 2 : 1)
+  instance_count = var.oracle_is_scale_out ? (var.enable_ha ? 2 * var.oracle_scale_out_node_count : var.oracle_scale_out_node_count) : (var.enable_ha ? 1 : 0)
   enable_ha      = var.enable_ha
   instance_type  = var.oracle_instance_type
 
