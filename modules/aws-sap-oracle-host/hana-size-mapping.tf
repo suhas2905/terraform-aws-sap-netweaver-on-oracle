@@ -249,7 +249,7 @@ variable "oracle_disks_logs_gp3" {
     },
     "m5.2xlarge" = {
       disk_nb   = 4,
-      disk_size = 2
+      disk_size = 50
     },
     "x1e.xlarge" = {
       disk_nb   = 2,
