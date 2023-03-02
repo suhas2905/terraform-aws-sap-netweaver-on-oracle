@@ -85,7 +85,7 @@ module "oracle_host" {
 
 module "sap_ascs_host" {
   source  = "./modules/aws-sap-ascs-host"
-  enabled = var.enabled
+  enabled = false
 
   # Instance Count depending on the environment
   instance_count = 1
@@ -125,7 +125,7 @@ module "sap_ascs_host" {
 
 module "sap_ers_host" {
   source  = "./modules/aws-sap-ers-host"
-  enabled = var.enabled && var.enable_ha ? true : false
+  enabled =  false
 
   # Instance Count depending on the environment
   instance_count = 1
@@ -170,7 +170,7 @@ module "sap_ers_host" {
 
 module "sap_app_host" {
   source  = "./modules/aws-sap-app-host"
-  enabled = var.enabled
+  enabled = false
 
   # Instance Count depending on the environment
   instance_count = var.as_instance_count
